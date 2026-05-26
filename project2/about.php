@@ -11,29 +11,7 @@
   </head>
 
   <body>
-    <header>
-      
-      <div class="branding">
-            <!-- Logo was created through use of GenAI -->
-            <img src="images/logo.webp" alt="Kwnd Creative Logo" width="400px" id="logo">
-            <h1 id="slogan">About KWND Creative</h1>
-      </div>
-
-      <!--common navbar-->
-      <nav>
-          <a id="navBar" href="index.html">Home</a>
-          <a id="navBar" href="about.html">About</a>
-          <a id="navBar" href="jobs.html">Jobs</a>
-          <a id="navBar" href="apply.html">Join Us</a>
-      </nav>
-      
-      <form id="searchForm" action="/search" method="get">
-        <label for="site-search" id="search-label">Search the site:</label>
-        <input type="search" id="site-search" placeholder="Search..."> 
-        <button type="submit">Search</button>
-      </form>
-    </header>
-
+    <?php include 'header.inc'; ?> 
     <main>
         <h2 class="headingCenter" id="classTimesHeading">Class Times</h2>
         <div class="times"> <!--Class Times-->
@@ -48,7 +26,7 @@
         <div> <!--Member Photo and Quotes (eng + alt lang)-->
           <ul class="meetOurMembers">
             <figure>
-              <img id="groupPhoto" src="Images/GroupPhoto.webp" alt="members in KWND" width="10000px">
+              <img id="groupPhoto" src="images/groupphoto.webp" alt="members in KWND" width="10000px">
               <figcaption id="groupCaption">Group Photo of Duy, Kerrigan, Will and Nguyen of KWND (from left to right)</figcaption>
             </figure>
 
@@ -153,13 +131,13 @@
 
             <div class="cardTop">
               <div class="cardLeft">
-                <img class="studentPhoto" src="Images/StudentPhoto.webp" alt="Kerrigan's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
+                <img class="studentPhoto" src="images/studentphoto.webp" alt="Kerrigan's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
                 <div class="idName">Kerrigan La-Brooy</div>
                 <div class="idDescription">Games and Interactivity/<br>Computer Science<br>Year 1</div>
               </div>
 
               <div class="cardRight">
-                <img class="swinLogo" src="Images/SwinLogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
+                <img class="swinLogo" src="images/swinlogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
               </div>
             </div>
 
@@ -172,13 +150,13 @@
 
             <div class="cardTop">
               <div class="cardLeft">
-                <img class="studentPhoto" src="Images/StudentPhoto.webp" alt="Will's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
+                <img class="studentPhoto" src="images/studentphoto.webp" alt="Will's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
                 <div class="idName">William Luck </div>
                 <div class="idDescription">Computer Science<br>Year 1</div>
               </div>
 
               <div class="cardRight">
-                <img class="swinLogo" src="Images/SwinLogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
+                <img class="swinLogo" src="images/swinlogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
               </div>
             </div>
 
@@ -191,13 +169,13 @@
 
             <div class="cardTop">
               <div class="cardLeft">
-                <img class="studentPhoto" src="Images/StudentPhoto.webp" alt="Duy's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
+                <img class="studentPhoto" src="images/studentphoto.webp" alt="Duy's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
                 <div class="idName">Khuong Duy Phan</div>
                 <div class="idDescription">Data science<br>Year 1</div>
               </div>
 
               <div class="cardRight">
-                <img class="swinLogo" src="Images/SwinLogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
+                <img class="swinLogo" src="images/swinlogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
               </div>
             </div>
 
@@ -210,13 +188,13 @@
 
             <div class="cardTop">
               <div class="cardLeft">
-                <img class="studentPhoto" src="Images/StudentPhoto.webp" alt="Nguyen's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
+                <img class="studentPhoto" src="images/studentphoto.webp" alt="Nguyen's Student Photo"> <!--picture from https://www.vecteezy.com/free-png/generic-person-icon -->
                 <div class="idName">Nguyen Pham</div>
                 <div class="idDescription">Engineering/<br>Computer Science<br>Year 2</div>
               </div>
 
               <div class="cardRight">
-                <img class="swinLogo" src="Images/SwinLogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
+                <img class="swinLogo" src="images/swinlogo.webp" alt="Swinburne Logo"> <!--picture from https://it.wikipedia.org/wiki/File:Logo_of_Swinburne_University_of_Technology.svg -->
               </div>
             </div>
 
@@ -228,11 +206,5 @@
         </div>
           
     </main>
-
-    <footer>
-        <p>Copyright &copy; 2025 Kwnd Creative</p>
-        <a href="https://github.com/106489702/Razeem_1430_G06-webpage">GitHub Repository</a>
-        <a href="https://razzeenfri1430g06.atlassian.net/jira/software/projects/SCRUM/boards/1?jql=assignee%20IN%20%28712020%3Aefb8f835-5e17-4fd4-8054-2840caf137c2%2C%20712020%3Ab61717f1-9a04-4add-aaa1-8c70e04797a8%29">Jira Board</a>
-        <a href="mailto:info@kwndcreate.com">Contact Us</a>
-    </footer>
+    <?php include 'footer.inc'; ?> 
   </body>

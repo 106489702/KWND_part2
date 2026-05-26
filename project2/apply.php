@@ -10,19 +10,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="branding">
-            <img src="./images/logo.webp" alt="Kwnd Creative Logo" id="logo">
-            <h1 id="slogan">Find your opportunities to join us!</h1>
-        </div>
-
-        <nav>
-            <a id="navBar" href="index.html">Home</a>
-            <a id="navBar" href="about.html">About</a>
-            <a id="navBar" href="jobs.html">Jobs</a>
-            <a id="navBar" href="apply.html">Join Us</a>
-        </nav>
-    </header>
+<?php include 'header.inc'; ?> 
 
     <main>
         <section class="formIntro">
@@ -175,11 +163,6 @@
         </form>
     </main>
 
-    <footer>
-        <p>Copyright &copy; 2025 KWND Creative</p>
-        <a href="https://github.com/106489702/Razeem_1430_G06-webpage">GitHub Repository</a>
-        <a href="https://razzeenfri1430g06.atlassian.net/">Jira Board</a>
-        <a href="mailto:info@kwndcreate.com">Contact Us</a>
-    </footer>
+    <?php include 'footer.inc'; ?> 
 </body>
 </html>

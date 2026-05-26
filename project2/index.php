@@ -11,29 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-
-        <div class="branding">
-            <!-- Logo was created through use of GenAI -->
-            <img src="./images/logo.webp" alt="Kwnd Creative Logo" width="400px" id="logo">
-            <h1 id="slogan">Capturing Your Vision Online</h1>
-        </div>
-
-    <!--common navbar-->
-    <nav>
-        <a id="navBar" href="index.php">Home</a>
-        <a id="navBar" href="about.php">About</a>
-        <a id="navBar" href="jobs.php">Jobs</a>
-        <a id="navBar" href="apply.php">Join Us</a>
-    </nav>
-
-  <form id="searchForm" action="/search" method="get">
-    <label for="site-search" id="search-label">Search the site:</label>
-    <input type="search" id="site-search" placeholder="Search..."> 
-    <button type="submit">Search</button>
-  </form>
-
-    </header>
+    <?php include 'header.inc'; ?> 
     <main>
         <div class="topcontent">
             <h2>Creating Engaging Media Experiences since 2026</h2>
@@ -75,6 +53,6 @@
             <img id="media1" src="./images/media1.webp" alt="Active Consultation Depiction" width="600px" id="mediaExperience">
         </div>
     </main>
-    
+    <?php include 'footer.inc'; ?> 
 </body>
 </html>
