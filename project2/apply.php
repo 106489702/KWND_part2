@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Apply for a role at KWND Creative">
+    <meta name="keywords" content="Apply, Job Application, Front-End Developer, Designer, Creative Agency, KWND Creative">
+    <meta name="author" content="G06">
+    <title>Apply | KWND Creative</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="branding">
+            <img src="./images/logo.webp" alt="Kwnd Creative Logo" id="logo">
+            <h1 id="slogan">Find your opportunities to join us!</h1>
+        </div>
+
+        <nav>
+            <a id="navBar" href="index.html">Home</a>
+            <a id="navBar" href="about.html">About</a>
+            <a id="navBar" href="jobs.html">Jobs</a>
+            <a id="navBar" href="apply.html">Join Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="formIntro">
+            <h2>Apply to Join KWND Creative</h2>
+            <p>
+                We are looking for creative and motivated applicants interested in
+                front-end development, branding, and digital content production.
+            </p>
+        </section>
+
+        <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post" id="applicationForm">
+
+            <div class="formGrid">
+
+                <!-- Job Ref -->
+                <div class="formRow">
+                    <label for="jobRef">Job Reference Number</label>
+                    <input type="text" id="jobRef" name="jobRef" required
+                        pattern="[A-Za-z0-9]{5}" maxlength="5"
+                        placeholder="ABC01"
+                        title="Exactly 5 alphanumeric characters">
+                </div>
+
+                <!-- First Name -->
+                <div class="formRow">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required
+                        pattern="[A-Za-z]{1,20}" maxlength="20">
+                </div>
+
+                <!-- Last Name -->
+                <div class="formRow">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required
+                        pattern="[A-Za-z]{1,20}" maxlength="20">
+                </div>
+
+                <!-- DOB -->
+                <div class="formRow">
+                    <label for="dob">Date of Birth</label>
+                    <input type="text" id="dob" name="dob" required
+                        pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}"
+                        placeholder="dd/mm/yyyy">
+                </div>
+
+                <!-- Gender -->
+                <fieldset class="fullWidth inlineFieldset">
+                    <legend>Gender</legend>
+
+                    <label class="radioLabel">
+                        <input type="radio" name="gender" value="Male" required> Male
+                    </label>
+
+                    <label class="radioLabel">
+                        <input type="radio" name="gender" value="Female"> Female
+                    </label>
+
+                    <label class="radioLabel">
+                        <input type="radio" name="gender" value="Other"> Other
+                    </label>
+                </fieldset>
+
+                <!-- Address -->
+                <div class="formRow fullWidth">
+                    <label for="streetAddress">Street Address</label>
+                    <input type="text" id="streetAddress" name="streetAddress" required maxlength="40">
+                </div>
+
+                <div class="formRow">
+                    <label for="suburbTown">Suburb/Town</label>
+                    <input type="text" id="suburbTown" name="suburbTown" required maxlength="40">
+                </div>
+
+                <div class="formRow">
+                    <label for="state">State</label>
+                    <select id="state" name="state" required>
+                        <option value="">Please Select</option>
+                        <option value="VIC">VIC</option>
+                        <option value="NSW">NSW</option>
+                        <option value="QLD">QLD</option>
+                        <option value="NT">NT</option>
+                        <option value="WA">WA</option>
+                        <option value="SA">SA</option>
+                        <option value="TAS">TAS</option>
+                        <option value="ACT">ACT</option>
+                    </select>
+                </div>
+
+                <div class="formRow">
+                    <label for="postcode">Postcode</label>
+                    <input type="text" id="postcode" name="postcode" required
+                        pattern="[0-9]{4}" maxlength="4">
+                </div>
+
+                <!-- Contact -->
+                <div class="formRow">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="formRow">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required
+                        pattern="[0-9]{8,12}" maxlength="12">
+                </div>
+
+                <!-- Skills -->
+                <fieldset class="fullWidth">
+                    <legend>Skills</legend>
+                    <p class="formHint">Select at least one relevant skill.</p>
+
+                    <label class="checkLabel">
+                        <input type="checkbox" name="skills[]" value="HTML"> HTML
+                    </label>
+
+                    <label class="checkLabel">
+                        <input type="checkbox" name="skills[]" value="CSS"> CSS
+                    </label>
+
+                    <label class="checkLabel">
+                        <input type="checkbox" name="skills[]" value="JavaScript"> JavaScript
+                    </label>
+
+                    <label class="checkLabel">
+                        <input type="checkbox" name="skills[]" value="Figma"> Figma
+                    </label>
+
+                    <label class="checkLabel">
+                        <input type="checkbox" name="skills[]" value="Branding"> Branding
+                    </label>
+
+                    <label class="checkLabel">
+                        <input type="checkbox" name="skills[]" value="Content Creation"> Content Creation
+                    </label>
+                </fieldset>
+
+                <!-- Other Skills -->
+                <div class="formRow fullWidth">
+                    <label for="otherSkills">Other Skills</label>
+                    <textarea id="otherSkills" name="otherSkills" rows="6"></textarea>
+                </div>
+
+                <!-- Buttons -->
+                <div class="formButtons fullWidth">
+                    <input type="submit" value="Submit Application">
+                    <input type="reset" value="Reset Form">
+                </div>
+
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2025 KWND Creative</p>
+        <a href="https://github.com/106489702/Razeem_1430_G06-webpage">GitHub Repository</a>
+        <a href="https://razzeenfri1430g06.atlassian.net/">Jira Board</a>
+        <a href="mailto:info@kwndcreate.com">Contact Us</a>
+    </footer>
+</body>
+</html>
