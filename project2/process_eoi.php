@@ -3,35 +3,22 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: apply.php");
     exit();
 }
-<!-- the website can only be reached via POST form submit -->
+//the website can only be reached via POST form submit
 
-// Extra check: ensure core POST fields actually exist
-// Prevents crafted/empty POST requests getting through
 if (!isset($_POST['jobRef'], $_POST['firstName'], $_POST['lastName'])) {
     header("Location: apply.php");
     exit();
 }
+//ensure POST exists -> prevents empty POST requests
 
-// ══════════════════════════════════════════════════════
-// SANITISE HELPER
-// Every text input goes through this before use
-//   trim()             → removes extra whitespace
-//   stripslashes()     → removes escape backslashes
-//   htmlspecialchars() → converts < > & " to safe HTML entities
-//                        this prevents XSS (cross-site scripting)
-// ══════════════════════════════════════════════════════
 function sanitise($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
-// ══════════════════════════════════════════════════════
-// COLLECT & SANITISE ALL POST DATA
-// Matches exact field names from your apply.html
-// ══════════════════════════════════════════════════════
 $jobRef       = sanitise($_POST['jobRef']);
 $firstName    = sanitise($_POST['firstName']);
 $lastName     = sanitise($_POST['lastName']);
-$dob          = sanitise($_POST['dob']);          // arrives as dd/mm/yyyy
+$dob          = sanitise($_POST['dob']);         
 $gender       = sanitise($_POST['gender'] ?? '');
 $streetAddress = sanitise($_POST['streetAddress']);
 $suburbTown   = sanitise($_POST['suburbTown']);
@@ -41,19 +28,13 @@ $email        = sanitise($_POST['email']);
 $phone        = sanitise($_POST['phone']);
 $otherSkills  = sanitise($_POST['otherSkills'] ?? '');
 
-// Skills is an array from checkboxes — sanitise each value individually
+
 $skills_raw   = $_POST['skills'] ?? [];
 $skills_clean = array_map('sanitise', $skills_raw);
 
-// ══════════════════════════════════════════════════════
-// SERVER-SIDE VALIDATION
-// Build an $errors array. If it has anything in it,
-// we show errors and stop — nothing gets inserted.
-// ══════════════════════════════════════════════════════
 $errors = [];
+//if the array contains anything, error messages appear and no input gets inserted
 
-// ── Job Reference ──────────────────────────────────
-// Required. Exactly 5 alphanumeric characters (matches your Part 1 pattern)
 if (empty($jobRef)) {
     $errors[] = "Job Reference Number is required.";
 } elseif (!preg_match('/^[A-Za-z0-9]{5}$/', $jobRef)) {
