@@ -1,109 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'header.inc'; ?>
 
-<head>
-    <meta charset="UTF-8" >
-    <meta name="description" content="Opening job positions at KWND Creative" >
-    <meta name="keywords" content="Job positions, Front-End Web Developer, Designer" >
-    <meta name="author" content="Nguyen Pham" >
-    <title>Opening Job Positions at KWND Creative</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  
-<?php include 'header.inc'; ?> 
- 
 <main>
-
-<h1>Job Positions</h1>
-
-<p>
-    KWND Creative is looking for dedicated web developers and designers who are interested in working with creative digital media webpages.
-</p>
-
-<aside>
-  <h2>Inclusive Employment Statement</h2>
+  <h1>Job Positions</h1>
   <p>
-    KWND Creative welcomes applications from people of all backgrounds and encourages Aboriginal and Torres Strait Islander peoples to apply. We are committed to a respectful and diverse workplace.
+    KWND Creative is looking for dedicated web developers and designers who are
+    interested in working with creative digital media webpages.
   </p>
-</aside>
 
-<section id="front-end" >
-    <h2>Front-End Web Developer</h2>
-    <h3>Reference Number: ABC01</h3>
-
+  <aside>
+    <h2>Inclusive Employment Statement</h2>
     <p>
-        This position involves building and updating UI element of digital websites. You will work with designers and other developers.
+      KWND Creative welcomes applications from people of all backgrounds and
+      encourages Aboriginal and Torres Strait Islander peoples to apply.
+      We are committed to a respectful and diverse workplace.
     </p>
+  </aside>
 
-    <p>
-        <strong>Salary:</strong> $75,000 – $90,000 annually<br>
-        <strong>Reporting line:</strong> Lead Developer
-    </p>
+  <!-- ══════════════════════════════════════════
+       SEARCH BAR
+       Submits GET so the search term stays in the URL.
+       Empty search = show all jobs.
+  ══════════════════════════════════════════ -->
+  <section id="jobSearch">
+    <form action="jobs.php" method="get" id="searchForm">
+      <label for="site-search">Search Jobs:</label>
+      <input type="search" id="site-search" name="search"
+             placeholder="e.g. Developer, Designer, ABC01"
+             value="<?php echo isset($_GET['search'])
+                          ? htmlspecialchars($_GET['search']) : ''; ?>">
+      <button type="submit">Search</button>
+      <?php if (!empty($_GET['search'])): ?>
+        <a href="jobs.php">Clear Search</a>
+      <?php endif; ?>
+    </form>
+  </section>
 
-    <h3>Key Responsibilities</h3>
-    <ol>
-        <li>Creating web pages using HTML and CSS</li>
-        <li>Helping ensure websites display correctly on different devices</li>
-        <li>Updating and maintaining existing website content</li>
-    </ol>
+  <?php
+  // ══════════════════════════════════════════
+  // DATABASE CONNECTION
+  // ══════════════════════════════════════════
+  require_once 'settings.php';
 
-    <h3 id="requirements">Requirements</h3>
+  $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+  if (!$conn) {
+      echo "<p class='error'>Could not connect to database: "
+           . mysqli_connect_error() . "</p>";
+  } else {
 
-    <h4>Essentials</h4>
-    <ul>
-        <li>Knowledge of HTML and CSS</li>
-        <li>Understanding of responsive web design</li>
-        <li>Active listening and communicating</li>
-    </ul>
+      // ══════════════════════════════════════════
+      // BUILD QUERY
+      // If a search term was submitted, filter results.
+      // Prepared statement prevents SQL injection.
+      // Searches across Title, JobRef, and Description.
+      // ══════════════════════════════════════════
+      $search_term = trim($_GET['search'] ?? '');
 
-    <h4>Preferables</h4>
-    <ul>
-        <li>Experience with JavaScript</li>
-        <li>Familiarity with GitHub</li>
-    </ul>
-</section>
+      if (!empty($search_term)) {
+          $stmt = mysqli_prepare($conn,
+              "SELECT * FROM jobs
+               WHERE Title       LIKE ?
+               OR    JobRef      LIKE ?
+               OR    Description LIKE ?
+               ORDER BY JobID ASC"
+          );
+          $like = '%' . $search_term . '%';
+          mysqli_stmt_bind_param($stmt, 'sss', $like, $like, $like);
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
+      } else {
+          // No search — fetch all jobs
+          $result = mysqli_query($conn, "SELECT * FROM jobs ORDER BY JobID ASC");
+      }
 
-<section id="designer" >
-    <h2>Digital Content Designer</h2>
-    <h3>Reference Number: DEF02</h3>
+      // ══════════════════════════════════════════
+      // DISPLAY RESULTS
+      // ══════════════════════════════════════════
+      if (mysqli_num_rows($result) === 0) {
+          echo "<p>No jobs found matching <strong>"
+               . htmlspecialchars($search_term) . "</strong>.</p>";
+      } else {
+          while ($job = mysqli_fetch_assoc($result)):
+              // Convert pipe-separated strings back into arrays for <li> rendering
+              $responsibilities = explode('|', $job['Responsibilities']);
+              $essentials       = explode('|', $job['EssentialReq']);
+              $preferables      = explode('|', $job['PreferableReq']);
+  ?>
 
-    <p>
-        This position focuses on creating visual content for websites and online platforms.
-    </p>
+      <!-- Each job is its own section, id uses the JobRef for anchor links -->
+      <section id="<?php echo htmlspecialchars($job['JobRef']); ?>">
 
-    <p>
-        <strong>Salary:</strong> $65,000 – $80,000 annually<br>
-        <strong>Reporting line:</strong> Creative Director
-    </p>
+        <h2><?php echo htmlspecialchars($job['Title']); ?></h2>
+        <h3>Reference Number: <?php echo htmlspecialchars($job['JobRef']); ?></h3>
 
-    <h3>Key Responsibilities</h3>
-    <ol>
-        <li>Designing images and layouts for digital content</li>
-        <li>Following design guidelines and branding</li>
-        <li>Working with team to complete projects on time</li>
-    </ol>
+        <p><?php echo htmlspecialchars($job['Description']); ?></p>
 
-    <h3>Requirements</h3>
+        <p>
+          <strong>Salary:</strong>
+          <?php echo htmlspecialchars($job['SalaryRange']); ?><br>
+          <strong>Reporting line:</strong>
+          <?php echo htmlspecialchars($job['ReportingLine']); ?>
+        </p>
 
-    <h4>Essentials</h4>
-    <ul>
-        <li>Basic skills in web design tools and software</li>
-        <li>Creative approach to solving design problems</li>
-        <li>Ability to transform ideas into clear digital visuals</li>
-    </ul>
+        <h3>Key Responsibilities</h3>
+        <ol>
+          <?php foreach ($responsibilities as $item): ?>
+            <li><?php echo htmlspecialchars(trim($item)); ?></li>
+          <?php endforeach; ?>
+        </ol>
 
-    <h4>Preferables</h4>
-    <ul>
-        <li>Basic HTML and CSS knowledge</li>
-        <li>Experience with designing web content</li>
-    </ul>
-</section>
+        <h3>Requirements</h3>
+
+        <h4>Essentials</h4>
+        <ul>
+          <?php foreach ($essentials as $item): ?>
+            <li><?php echo htmlspecialchars(trim($item)); ?></li>
+          <?php endforeach; ?>
+        </ul>
+
+        <h4>Preferables</h4>
+        <ul>
+          <?php foreach ($preferables as $item): ?>
+            <li><?php echo htmlspecialchars(trim($item)); ?></li>
+          <?php endforeach; ?>
+        </ul>
+
+        <!-- Link directly to the apply form with the job ref pre-filled -->
+        <a href="apply.php?jobRef=<?php echo urlencode($job['JobRef']); ?>">
+          Apply for this position →
+        </a>
+
+      </section>
+
+  <?php
+          endwhile;
+      }
+
+      // Close prepared statement if it was used
+      if (!empty($search_term) && isset($stmt)) {
+          mysqli_stmt_close($stmt);
+      }
+      mysqli_close($conn);
+  }
+  ?>
 
 </main>
-    <?php include 'footer.inc'; ?> 
-</body>
-</html>
 
+<?php include 'footer.inc'; ?>
