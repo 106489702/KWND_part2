@@ -15,12 +15,7 @@
       We are committed to a respectful and diverse workplace.
     </p>
   </aside>
-
-  <!-- ══════════════════════════════════════════
-       SEARCH BAR
-       Submits GET so the search term stays in the URL.
-       Empty search = show all jobs.
-  ══════════════════════════════════════════ -->
+  
   <section id="jobSearch">
     <form action="jobs.php" method="get" id="searchForm">
       <label for="site-search">Search Jobs:</label>
@@ -36,9 +31,6 @@
   </section>
 
   <?php
-  // ══════════════════════════════════════════
-  // DATABASE CONNECTION
-  // ══════════════════════════════════════════
   require_once 'settings.php';
 
   $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
@@ -47,12 +39,6 @@
            . mysqli_connect_error() . "</p>";
   } else {
 
-      // ══════════════════════════════════════════
-      // BUILD QUERY
-      // If a search term was submitted, filter results.
-      // Prepared statement prevents SQL injection.
-      // Searches across Title, JobRef, and Description.
-      // ══════════════════════════════════════════
       $search_term = trim($_GET['search'] ?? '');
 
       if (!empty($search_term)) {
@@ -68,25 +54,20 @@
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
       } else {
-          // No search — fetch all jobs
           $result = mysqli_query($conn, "SELECT * FROM jobs ORDER BY JobID ASC");
       }
 
-      // ══════════════════════════════════════════
-      // DISPLAY RESULTS
-      // ══════════════════════════════════════════
       if (mysqli_num_rows($result) === 0) {
           echo "<p>No jobs found matching <strong>"
                . htmlspecialchars($search_term) . "</strong>.</p>";
       } else {
           while ($job = mysqli_fetch_assoc($result)):
-              // Convert pipe-separated strings back into arrays for <li> rendering
+              
               $responsibilities = explode('|', $job['Responsibilities']);
               $essentials       = explode('|', $job['EssentialReq']);
               $preferables      = explode('|', $job['PreferableReq']);
   ?>
 
-      <!-- Each job is its own section, id uses the JobRef for anchor links -->
       <section id="<?php echo htmlspecialchars($job['JobRef']); ?>">
 
         <h2><?php echo htmlspecialchars($job['Title']); ?></h2>
@@ -124,9 +105,8 @@
           <?php endforeach; ?>
         </ul>
 
-        <!-- Link directly to the apply form with the job ref pre-filled -->
-        <a href="apply.php?jobRef=<?php echo urlencode($job['JobRef']); ?>">
-          Apply for this position →
+        <!--<a href="apply.php?jobRef=<?php echo urlencode($job['JobRef']); ?>">
+          Apply for this position → -->
         </a>
 
       </section>
@@ -134,8 +114,6 @@
   <?php
           endwhile;
       }
-
-      // Close prepared statement if it was used
       if (!empty($search_term) && isset($stmt)) {
           mysqli_stmt_close($stmt);
       }
