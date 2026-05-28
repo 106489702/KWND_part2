@@ -41,34 +41,28 @@ if (empty($jobRef)) {
     $errors[] = "Job Reference must be exactly 5 alphanumeric characters (e.g. ABC01).";
 }
 
-// ── First Name ─────────────────────────────────────
-// Required. Letters only. 1–20 characters.
+//First Name
 if (empty($firstName)) {
     $errors[] = "First Name is required.";
 } elseif (!preg_match('/^[A-Za-z]{1,20}$/', $firstName)) {
     $errors[] = "First Name must contain letters only (max 20 characters).";
 }
 
-// ── Last Name ──────────────────────────────────────
-// Required. Letters only. 1–20 characters.
+//Last Name
 if (empty($lastName)) {
     $errors[] = "Last Name is required.";
 } elseif (!preg_match('/^[A-Za-z]{1,20}$/', $lastName)) {
     $errors[] = "Last Name must contain letters only (max 20 characters).";
 }
 
-// ── Date of Birth ──────────────────────────────────
-// Required. Format must be dd/mm/yyyy.
-// Convert to Y-m-d for MySQL DATE column.
-// Age must be between 15 and 80.
-$dob_mysql = null; // Will hold the converted date for DB insert
+//Age
+$dob_mysql = null; 
 
 if (empty($dob)) {
     $errors[] = "Date of Birth is required.";
 } elseif (!preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/[0-9]{4}$/', $dob)) {
     $errors[] = "Date of Birth must be in dd/mm/yyyy format.";
 } else {
-    // Convert dd/mm/yyyy → DateTime object for age calculation
     $dobDate = DateTime::createFromFormat('d/m/Y', $dob);
     if (!$dobDate) {
         $errors[] = "Date of Birth is not a valid date.";
@@ -78,40 +72,32 @@ if (empty($dob)) {
         if ($age < 15 || $age > 80) {
             $errors[] = "Applicant must be between 15 and 80 years old.";
         }
-        // Format for MySQL: Y-m-d
         $dob_mysql = $dobDate->format('Y-m-d');
     }
 }
 
-// ── Gender ─────────────────────────────────────────
-// Required. Must match one of the three allowed values.
+//Gender
 $allowed_genders = ['Male', 'Female', 'Other'];
 if (empty($gender) || !in_array($gender, $allowed_genders)) {
     $errors[] = "Please select a gender.";
 }
 
-// ── Street Address ─────────────────────────────────
-// Required. Max 40 characters.
 if (empty($streetAddress)) {
     $errors[] = "Street Address is required.";
 }
 
-// ── Suburb/Town ────────────────────────────────────
-// Required. Max 40 characters.
+//Suburb/Town
 if (empty($suburbTown)) {
     $errors[] = "Suburb/Town is required.";
 }
 
-// ── State ──────────────────────────────────────────
-// Required. Must be a valid Australian state abbreviation.
+//State
 $allowed_states = ['VIC','NSW','QLD','SA','WA','TAS','ACT','NT'];
 if (empty($state) || !in_array($state, $allowed_states)) {
     $errors[] = "Please select a valid State.";
 }
 
-// ── Postcode ───────────────────────────────────────
-// Required. Exactly 4 digits.
-// Must match the selected state's postcode range.
+//Postcode
 if (empty($postcode)) {
     $errors[] = "Postcode is required.";
 } elseif (!preg_match('/^[0-9]{4}$/', $postcode)) {
@@ -134,25 +120,21 @@ if (empty($postcode)) {
     }
 }
 
-// ── Email ──────────────────────────────────────────
-// Required. Must pass PHP's built-in email format check.
+// Email
 if (empty($email)) {
     $errors[] = "Email address is required.";
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = "Please enter a valid email address.";
 }
 
-// ── Phone ──────────────────────────────────────────
-// Required. 8–12 digits, no spaces (matches your Part 1 pattern).
+// Phone
 if (empty($phone)) {
     $errors[] = "Phone Number is required.";
 } elseif (!preg_match('/^[0-9]{8,12}$/', $phone)) {
     $errors[] = "Phone Number must be 8–12 digits (numbers only).";
 }
 
-// ── Skills ─────────────────────────────────────────
-// At least one checkbox must be selected.
-// Each value must be from the allowed list (prevents tampering).
+// Skills
 $allowed_skills = ['HTML','CSS','JavaScript','Figma','Branding','Content Creation'];
 if (empty($skills_clean)) {
     $errors[] = "Please select at least one skill.";
@@ -165,15 +147,12 @@ if (empty($skills_clean)) {
     }
 }
 
-// ── Other Skills ───────────────────────────────────
+// Other Skills
 // Optional but cap at 300 characters
 if (strlen($otherSkills) > 300) {
     $errors[] = "Other Skills must be under 300 characters.";
 }
 
-// ══════════════════════════════════════════════════════
-// VALIDATION FAILED — show all errors, stop here
-// ══════════════════════════════════════════════════════
 if (!empty($errors)) {
     include 'header.inc';
     ?>
@@ -191,9 +170,6 @@ if (!empty($errors)) {
     exit();
 }
 
-// ══════════════════════════════════════════════════════
-// ALL VALIDATION PASSED — connect to the database
-// ══════════════════════════════════════════════════════
 require_once 'settings.php';
 
 $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
@@ -201,10 +177,6 @@ if (!$conn) {
     die("ERROR: Could not connect to database. " . mysqli_connect_error());
 }
 
-// ══════════════════════════════════════════════════════
-// CREATE EOI TABLE IF IT DOESN'T EXIST
-// IF NOT EXISTS means this is safe to run every time
-// ══════════════════════════════════════════════════════
 $create_sql = "
 CREATE TABLE IF NOT EXISTS `eoi` (
   `EOINumber`   INT(11)      NOT NULL AUTO_INCREMENT,
@@ -230,11 +202,6 @@ if (!mysqli_query($conn, $create_sql)) {
     die("ERROR: Could not create eoi table. " . mysqli_error($conn));
 }
 
-// ══════════════════════════════════════════════════════
-// PREPARE & INSERT USING PREPARED STATEMENT
-// ? placeholders keep data separate from the SQL query
-// This completely prevents SQL injection
-// ══════════════════════════════════════════════════════
 $skills_string = implode(', ', $skills_clean); // e.g. "HTML, CSS, Figma"
 
 $stmt = mysqli_prepare($conn,
@@ -247,12 +214,11 @@ if (!$stmt) {
     die("ERROR: Prepare failed. " . mysqli_error($conn));
 }
 
-// 's' = string for each of the 13 fields
 mysqli_stmt_bind_param($stmt, 'sssssssssssss',
     $jobRef,
     $firstName,
     $lastName,
-    $dob_mysql,      // ← Y-m-d format for MySQL DATE column
+    $dob_mysql,      
     $gender,
     $streetAddress,
     $suburbTown,
@@ -264,12 +230,9 @@ mysqli_stmt_bind_param($stmt, 'sssssssssssss',
     $otherSkills
 );
 
-// ══════════════════════════════════════════════════════
-// EXECUTE & SHOW RESULT
-// ══════════════════════════════════════════════════════
 if (mysqli_stmt_execute($stmt)) {
 
-    $eoi_number = mysqli_insert_id($conn); // The auto-generated EOINumber
+    $eoi_number = mysqli_insert_id($conn); 
 
     include 'header.inc';
     ?>
