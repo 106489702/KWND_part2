@@ -1,0 +1,471 @@
+header {
+  /* Background image from Gemini */
+  background-image: url("images/bannerback.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 4px double #000000;
+  padding: 4px 8px;
+  margin: 0px 4px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* Background image from Gemini */
+  background-image: url('styles/images/backdrop.webp');
+  background-repeat: repeat;
+}
+
+.branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  border: 4px solid #000000;
+}
+
+#slogan {
+  align-items: center;
+  text-align: center;
+  font-size: 1em;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: rgb(18, 0, 10);
+  border: 4px solid #000000;
+  background-color: #ffffff;
+  display: inline-block;
+  width: fit-content;
+}
+
+#navBar {
+  border: 4px solid #000000;
+  background-color: #ffffff;
+  padding: 4px 8px;
+  margin: 0px 4px;
+  text-decoration: none;
+  color: #000000;
+  float: left;
+  position: relative;
+  top: -30px;
+}
+
+#navBar:hover {
+  text-decoration: underline;
+  color: #0614da;
+  background-color: #f0f8ff;
+}
+
+#searchForm {
+  float: right;
+  margin-top: 8px;
+  position: relative;
+  top: -30px;
+}
+
+.topcontent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 4px solid #000000;
+  background-color: #ffffff;
+  border-radius: 6px;
+}
+
+.content1 {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+}
+
+#media1 {
+  border: 4px solid #000000;
+  border-color: #000000;
+  border-radius: 6px;
+}
+
+#servicesTable {
+  display: flex;
+  border: 4px #000000;
+  margin-right: 100px;
+  background-color: #f5f5f5;
+}
+
+#servicesTable th {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular';
+  font-weight: bold;
+  background-color: #d3d3d3;
+}
+
+#classTimesHeading{
+  padding-bottom: 12px;
+}
+
+footer {
+  border-top-style: double;
+  border-top-width: 4px;
+  border-top-color: #000000;
+  padding: 4px 8px;
+  margin: 0px 4px;
+  background-color: #ffffff;
+}
+
+.headingCenter{
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.meetOurMembers {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 150px;
+}
+
+figure {
+  margin: 0;
+  flex: 0 0 50%;
+}
+
+#meetOurMembersHeading {
+  padding-top: 12px;
+}
+
+#groupPhoto {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  border: 4px solid #000;
+  border-radius: 6px;
+}
+
+#groupCaption {
+  text-align: center;
+  color: #333333;
+}
+
+.membersList {
+  flex: 1;
+  width: auto;
+  align-self: flex-start;
+}
+
+.listHeading {
+  font-weight: bold;
+  list-style: none;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.dashlessList {
+  list-style: none;
+  padding-left: 5px;
+}
+
+.quoteList {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.times {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 4px 30px; /* row gap / column gap */
+}
+
+.times div:nth-child(odd) {
+  font-weight: bold;
+  text-align: left;
+}
+
+.times div:nth-child(even) {
+  text-align: left;
+}
+
+/* Table Styles */
+
+/* Table */
+table {
+  border-collapse: collapse;
+}
+
+/* Table headers/data cells */
+th, td {
+  border: 2px solid #000000;
+  padding: 6px 10px;
+  min-width: 100px;
+}
+
+/* First Row, First cell (if data) */
+tr:first-child td:first-child {
+  border: none;
+}
+
+/* First data cell */
+td:first-child {
+  text-align: right;
+}
+
+.hobbyTable {
+  margin: auto;
+}
+
+#hobbyTable {
+  border: 4px #000000;
+  background-color: #f5f5f5;
+}
+
+#hobbyTable th {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular';
+  background-color: #d3d3d3;
+}
+
+#hobbyTable tr:not(:first-child) td:first-child {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular';
+  background-color: #d3d3d3;
+}
+
+aside {
+  float: right;
+  width: 25%;
+  border: 2px solid #000000;
+  padding: 10px;
+  margin: 10px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+main {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.formIntro {
+  text-align: center;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+#applicationForm {
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 25px;
+  border: 2px solid #000000;
+  background-color: hsla(0, 9%, 75%, 0.815);
+  border-radius: 6px;
+}
+
+#applicationForm fieldset {
+  border: 2px solid #000000;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  background-color: #ffffff;
+}
+
+#applicationForm legend {
+  font-weight: bold;
+  padding: 0 8px;
+}
+
+#applicationForm p {
+  margin-bottom: 15px;
+}
+
+#applicationForm label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+#applicationForm input[type="text"],
+#applicationForm input[type="email"],
+#applicationForm input[type="tel"],
+#applicationForm select,
+#applicationForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.inlineFieldset {
+  margin-top: 15px;
+}
+
+.radioLabel,
+.checkLabel {
+  display: block;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.radioLabel input,
+.checkLabel input {
+  margin-right: 8px;
+}
+
+.formHint {
+  font-size: 0.95em;
+  margin-bottom: 10px;
+}
+
+.formButtons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.formButtons input[type="submit"],
+.formButtons input[type="reset"] {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  padding: 10px 18px;
+  margin: 0 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.formButtons input[type="submit"]:hover,
+.formButtons input[type="reset"]:hover {
+  background-color: #f0f8ff;
+}
+
+#requirements {
+  color: #ff0000;
+}
+
+body {
+  background-color: #FDFCFA;
+}
+
+/* ID Card */
+
+#studentIdsHeading {
+  padding-top: 20px;
+}
+
+.idContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.idCard {
+  width: 320px;
+  border: 3px solid #060606;
+  background: #ffffff;
+  padding: 15px;
+  transition: 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+.idCard:hover {
+  border-color: #DC2E27;
+  transform: scale(1.08);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.studentPhoto {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.idName {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.idDescription {
+  font-size: 12px;
+  color: #333333;
+  margin-top: 3px;
+}
+
+.swinLogo {
+  width: 100px;
+  height: 50px;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.idNumber {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.contributionDefList {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  transform: translateX(-16px);
+}
+
+.contDLItem {
+  margin: 0;
+  padding: 0;
+  transform: translateX(16px);
+}
+
+.boldDT {
+  font-weight: bold;
+}
+
+.padDT {
+  padding-top: 10px;
+}
+
+.bottomPaddingDL {
+  padding-bottom: 20px;
+}
+
+#funFactsHeading{
+  padding-bottom: 5px;
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
