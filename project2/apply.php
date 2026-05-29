@@ -90,7 +90,7 @@
                 <div class="formRow">
                     <label for="postcode">Postcode</label>
                     <input type="text" id="postcode" name="postcode" required
-                        pattern="[0-9]{4}" maxlength="4">
+                           maxlength="4">
                 </div>
 
                 <!-- Contact -->
@@ -102,7 +102,7 @@
                 <div class="formRow">
                     <label for="phone">Phone Number</label>
                     <input type="text" id="phone" name="phone" required
-                        pattern="[0-9]{8,12}" maxlength="12">
+                           maxlength="12">
                 </div>
 
                 <!-- Skills -->
@@ -152,5 +152,4 @@
     </main>
 
     <?php include 'footer.inc'; ?> 
-</body>
-</html>
+
