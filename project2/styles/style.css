@@ -13,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   /* Background image from Gemini */
-  background-image: url('styles/images/backdrop.webp');
+  background-image: url('images/backdrop.webp');
   background-repeat: repeat;
 }
 
