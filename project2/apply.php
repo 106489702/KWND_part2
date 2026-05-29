@@ -16,7 +16,7 @@
                 <!-- Job Ref -->
                 <div class="formRow">
                     <label for="jobRef">Job Reference Number</label>
-                    <input type="text" id="jobRef" name="jobRef" required
+                    <input type="text" id="jobRef" name="jobRef"
                         maxlength="5"
                         placeholder="ABC01"
                         title="Exactly 5 alphanumeric characters">
@@ -25,21 +25,21 @@
                 <!-- First Name -->
                 <div class="formRow">
                     <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required
+                    <input type="text" id="firstName" name="firstName"
                            maxlength="20">
                 </div>
 
                 <!-- Last Name -->
                 <div class="formRow">
                     <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required
+                    <input type="text" id="lastName" name="lastName"
                            maxlength="20">
                 </div>
 
                 <!-- DOB -->
                 <div class="formRow">
                     <label for="dob">Date of Birth</label>
-                    <input type="text" id="dob" name="dob" required
+                    <input type="text" id="dob" name="dob"
                         placeholder="dd/mm/yyyy">
                 </div>
 
@@ -48,7 +48,7 @@
                     <legend>Gender</legend>
 
                     <label class="radioLabel">
-                        <input type="radio" name="gender" value="Male" required> Male
+                        <input type="radio" name="gender" value="Male"> Male
                     </label>
 
                     <label class="radioLabel">
@@ -63,17 +63,17 @@
                 <!-- Address -->
                 <div class="formRow fullWidth">
                     <label for="streetAddress">Street Address</label>
-                    <input type="text" id="streetAddress" name="streetAddress" required maxlength="40">
+                    <input type="text" id="streetAddress" name="streetAddress" maxlength="40">
                 </div>
 
                 <div class="formRow">
                     <label for="suburbTown">Suburb/Town</label>
-                    <input type="text" id="suburbTown" name="suburbTown" required maxlength="40">
+                    <input type="text" id="suburbTown" name="suburbTown" maxlength="40">
                 </div>
 
                 <div class="formRow">
                     <label for="state">State</label>
-                    <select id="state" name="state" required>
+                    <select id="state" name="state">
                         <option value="">Please Select</option>
                         <option value="VIC">VIC</option>
                         <option value="NSW">NSW</option>
@@ -88,19 +88,19 @@
 
                 <div class="formRow">
                     <label for="postcode">Postcode</label>
-                    <input type="text" id="postcode" name="postcode" required
+                    <input type="text" id="postcode" name="postcode"
                            maxlength="4">
                 </div>
 
                 <!-- Contact -->
                 <div class="formRow">
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="email" name="email">
                 </div>
 
                 <div class="formRow">
                     <label for="phone">Phone Number</label>
-                    <input type="text" id="phone" name="phone" required
+                    <input type="text" id="phone" name="phone"
                            maxlength="12">
                 </div>
 
