@@ -148,8 +148,7 @@ if (empty($skills_clean)) {
     }
 }
 
-// Other Skills
-// Optional but cap at 300 characters
+// Other Skills (max 300 characters)
 if (strlen($otherSkills) > 300) {
     $errors[] = "Other Skills must be under 300 characters.";
 }
@@ -158,13 +157,13 @@ if (!empty($errors)) {
     include 'header.inc';
     ?>
     <main>
-      <h2>Please Fix the Following Errors</h2>
+      <h2>Error(s)</h2>
       <ul class="errorList">
         <?php foreach ($errors as $err): ?>
           <li><?php echo $err; ?></li>
         <?php endforeach; ?>
       </ul>
-      <p><a href="apply.php">Try again</a></p>
+      <p><a href="apply.php">Try Again</a></p>
     </main>
     <?php
     include 'footer.inc';
@@ -205,17 +204,17 @@ if (!mysqli_query($conn, $create_sql)) {
 
 $skills_string = implode(', ', $skills_clean);
 
-$stmt = mysqli_prepare($conn,
+$statememt = mysqli_prepare($conn,
     "INSERT INTO eoi
      (JobRef, FirstName, LastName, DOB, Gender, Street, SuburbTown, State, Postcode, Email, Phone, Skills, OtherSkills)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 );
 
-if (!$stmt) {
+if (!$statement) {
     die("ERROR: Prepare failed. " . mysqli_error($conn));
 }
 
-mysqli_stmt_bind_param($stmt, 'sssssssssssss',
+mysqli_statement_fill($statement, 'sssssssssssss',
     $jobRef,
     $firstName,
     $lastName,
@@ -231,7 +230,7 @@ mysqli_stmt_bind_param($stmt, 'sssssssssssss',
     $otherSkills
 );
 
-if (mysqli_stmt_execute($stmt)) {
+if (mysqli_statement_execute($statement)) {
 
     $eoi_number = mysqli_insert_id($conn); 
 
@@ -262,10 +261,10 @@ if (mysqli_stmt_execute($stmt)) {
     include 'header.inc';
     echo "<main><h2>Submission Failed</h2>";
     echo "<p>There was a problem saving your application. Please try again.</p>";
-    echo "<p>" . mysqli_stmt_error($stmt) . "</p></main>";
+    echo "<p>" . mysqli_statement_error($stmt) . "</p></main>";
     include 'footer.inc';
 }
 
-mysqli_stmt_close($stmt);
+mysqli_statement_close($stmt);
 mysqli_close($conn);
 ?>
