@@ -12,9 +12,6 @@ if (!isset($_SESSION["admin"])) {
 }
 ?>
 
-<?php include 'nav.inc'; ?>
-
-
 <main>
 
     <div class="formIntro">
