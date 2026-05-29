@@ -18,7 +18,7 @@
                 <div class="formRow">
                     <label for="jobRef">Job Reference Number</label>
                     <input type="text" id="jobRef" name="jobRef" required
-                        pattern="[A-Za-z0-9]{5}" maxlength="5"
+                        maxlength="5"
                         placeholder="ABC01"
                         title="Exactly 5 alphanumeric characters">
                 </div>
@@ -27,21 +27,20 @@
                 <div class="formRow">
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName" required
-                        pattern="[A-Za-z]{1,20}" maxlength="20">
+                           maxlength="20">
                 </div>
 
                 <!-- Last Name -->
                 <div class="formRow">
                     <label for="lastName">Last Name</label>
                     <input type="text" id="lastName" name="lastName" required
-                        pattern="[A-Za-z]{1,20}" maxlength="20">
+                           maxlength="20">
                 </div>
 
                 <!-- DOB -->
                 <div class="formRow">
                     <label for="dob">Date of Birth</label>
                     <input type="text" id="dob" name="dob" required
-                        pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}"
                         placeholder="dd/mm/yyyy">
                 </div>
 
