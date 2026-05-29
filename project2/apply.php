@@ -8,7 +8,8 @@
             </p>
         </section>
 
-        <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post" id="applicationForm">
+        <form action="process_eoi.php" method="post" id="applicationForm" novalidate>
+        <!-- lets the validation only happen in process_eoi.process -->
 
             <div class="formGrid">
 
@@ -95,12 +96,12 @@
                 <!-- Contact -->
                 <div class="formRow">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="text" id="email" name="email" required>
                 </div>
 
                 <div class="formRow">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required
+                    <input type="text" id="phone" name="phone" required
                         pattern="[0-9]{8,12}" maxlength="12">
                 </div>
 
