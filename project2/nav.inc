@@ -3,4 +3,5 @@
           <a id="navBar" href="about.php">About</a>
           <a id="navBar" href="jobs.php">Jobs</a>
           <a id="navBar" href="apply.php">Join Us</a>
+          <a id="navBar" href="manage.php">Manage</a>
       </nav>
