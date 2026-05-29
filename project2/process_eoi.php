@@ -204,17 +204,17 @@ if (!mysqli_query($conn, $create_sql)) {
 
 $skills_string = implode(', ', $skills_clean);
 
-$statememt = mysqli_prepare($conn,
+$stmt = mysqli_prepare($conn,
     "INSERT INTO eoi
      (JobRef, FirstName, LastName, DOB, Gender, Street, SuburbTown, State, Postcode, Email, Phone, Skills, OtherSkills)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 );
 
-if (!$statement) {
+if (!$stmt) {
     die("ERROR: Prepare failed. " . mysqli_error($conn));
 }
 
-mysqli_statement_fill($statement, 'sssssssssssss',
+mysqli_stmt_bind_param($statement, 'sssssssssssss',
     $jobRef,
     $firstName,
     $lastName,
@@ -230,7 +230,7 @@ mysqli_statement_fill($statement, 'sssssssssssss',
     $otherSkills
 );
 
-if (mysqli_statement_execute($statement)) {
+if (mysqli_stmt_execute($statement)) {
 
     $eoi_number = mysqli_insert_id($conn); 
 
@@ -261,7 +261,7 @@ if (mysqli_statement_execute($statement)) {
     include 'header.inc';
     echo "<main><h2>Submission Failed</h2>";
     echo "<p>There was a problem saving your application. Please try again.</p>";
-    echo "<p>" . mysqli_statement_error($stmt) . "</p></main>";
+    echo "<p>" . mysqli_stmt_error($stmt) . "</p></main>";
     include 'footer.inc';
 }
 
