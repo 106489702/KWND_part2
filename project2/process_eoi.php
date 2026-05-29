@@ -164,7 +164,7 @@ if (!empty($errors)) {
           <li><?php echo $err; ?></li>
         <?php endforeach; ?>
       </ul>
-      <p><a href="apply.php">← Go back and fix your application</a></p>
+      <p><a href="apply.php">Try again</a></p>
     </main>
     <?php
     include 'footer.inc';
@@ -252,7 +252,7 @@ if (mysqli_stmt_execute($stmt)) {
           <tr><th>Status</th>      <td>New</td></tr>
         </table>
         <p>We will contact you shortly regarding your application.</p>
-        <a href="index.php">← Return to Home</a>
+        <a href="index.php">Return to Home</a>
       </section>
     </main>
     <?php
