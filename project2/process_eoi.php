@@ -214,7 +214,7 @@ if (!$stmt) {
     die("ERROR: Prepare failed. " . mysqli_error($conn));
 }
 
-mysqli_stmt_bind_param($statement, 'sssssssssssss',
+mysqli_stmt_bind_param($stmt, 'sssssssssssss',
     $jobRef,
     $firstName,
     $lastName,
@@ -230,7 +230,7 @@ mysqli_stmt_bind_param($statement, 'sssssssssssss',
     $otherSkills
 );
 
-if (mysqli_stmt_execute($statement)) {
+if (mysqli_stmt_execute($stmt)) {
 
     $eoi_number = mysqli_insert_id($conn); 
 
@@ -265,6 +265,6 @@ if (mysqli_stmt_execute($statement)) {
     include 'footer.inc';
 }
 
-mysqli_statement_close($stmt);
+mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
