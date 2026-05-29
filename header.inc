@@ -7,7 +7,7 @@
     <meta name="keywords" content="Media,Digital Media,Web Design,Website Designer,Design,Designer,Brand,Branding,Digital,Team,About Us,Team Members,Digital Media Agency">
     <meta name="author" content="William Luck, Kerrigan La-Brooy Jr, Nguyen Pham, Duy">
     <!--CSS Style Sheet-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <header>
       <div class="branding">
