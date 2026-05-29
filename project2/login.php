@@ -33,21 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Admin Login">
-    <meta name="keywords" content="login, admin">
-    <meta name="author" content="Duy">
-    <title>Admin Login</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
 <?php include 'header.inc'; ?>
 <?php include 'nav.inc'; ?>
 

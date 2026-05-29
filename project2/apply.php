@@ -1,4 +1,4 @@
-    <?php include '../header.inc'; ?> 
+    <?php include 'header.inc'; ?> 
     <main>
         <section class="formIntro">
             <h2>Apply to Join KWND Creative</h2>
