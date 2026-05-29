@@ -230,5 +230,4 @@
         </div>
           
     </main>
-    <?php include 'footer.inc'; ?> 
-  </body>
+    <?php include '../footer.inc'; ?> 
