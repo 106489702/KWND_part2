@@ -133,3 +133,22 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `eoi` (
+  `EOINumber`   INT(11)      NOT NULL AUTO_INCREMENT,
+  `JobRef`      VARCHAR(5)   NOT NULL,
+  `FirstName`   VARCHAR(20)  NOT NULL,
+  `LastName`    VARCHAR(20)  NOT NULL,
+  `DOB`         DATE         NOT NULL,
+  `Gender`      ENUM('Male','Female','Other') NOT NULL,
+  `Street`      VARCHAR(40)  NOT NULL,
+  `SuburbTown`  VARCHAR(40)  NOT NULL,
+  `State`       ENUM('VIC','NSW','QLD','SA','WA','TAS','ACT','NT') NOT NULL,
+  `Postcode`    CHAR(4)      NOT NULL,
+  `Email`       VARCHAR(60)  NOT NULL,
+  `Phone`       VARCHAR(12)  NOT NULL,
+  `Skills`      VARCHAR(300) NOT NULL,
+  `OtherSkills` VARCHAR(300) DEFAULT NULL,
+  `Status`      ENUM('New','Current','Final') NOT NULL DEFAULT 'New',
+  PRIMARY KEY (`EOINumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
