@@ -82,6 +82,7 @@ if (empty($gender) || !in_array($gender, $allowed_genders)) {
     $errors[] = "Please select a gender.";
 }
 
+//Street Address
 if (empty($streetAddress)) {
     $errors[] = "Street Address is required.";
 }
@@ -202,7 +203,7 @@ if (!mysqli_query($conn, $create_sql)) {
     die("ERROR: Could not create eoi table. " . mysqli_error($conn));
 }
 
-$skills_string = implode(', ', $skills_clean); // e.g. "HTML, CSS, Figma"
+$skills_string = implode(', ', $skills_clean);
 
 $stmt = mysqli_prepare($conn,
     "INSERT INTO eoi
