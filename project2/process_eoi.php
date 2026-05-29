@@ -265,6 +265,6 @@ if (mysqli_stmt_execute($stmt)) {
     include 'footer.inc';
 }
 
-mysqli_statement_close($stmt);
+mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
