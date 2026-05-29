@@ -1,4 +1,4 @@
-    <?php include '../header.inc'; ?> 
+    <?php include 'header.inc'; ?> 
     <main>
         <div class="topcontent">
             <h2>Creating Engaging Media Experiences since 2026</h2>

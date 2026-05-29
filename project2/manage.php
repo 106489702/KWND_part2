@@ -12,16 +12,6 @@ if (!isset($_SESSION["admin"])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Manage</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
 <?php include 'header.inc'; ?>
 <?php include 'nav.inc'; ?>
 
@@ -38,5 +28,3 @@ if (!isset($_SESSION["admin"])) {
 
 <?php include 'footer.inc'; ?>
 
-</body>
-</html>

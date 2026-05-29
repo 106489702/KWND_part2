@@ -1,4 +1,4 @@
-<?php include '../header.inc'; ?>  
+<?php include 'header.inc'; ?>  
 <main>
 
 <h1>Job Positions</h1>
