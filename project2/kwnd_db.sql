@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 26, 2026 at 06:34 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th5 29, 2026 lúc 07:45 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kwnd_db`
+-- Cơ sở dữ liệu: `kwnd_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contributions`
+-- Cấu trúc bảng cho bảng `contributions`
 --
 
 CREATE TABLE `contributions` (
@@ -36,7 +36,7 @@ CREATE TABLE `contributions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `contributions`
+-- Đang đổ dữ liệu cho bảng `contributions`
 --
 
 INSERT INTO `contributions` (`id`, `first_name`, `last_name`, `contribution`, `assessment_part`) VALUES
@@ -55,25 +55,79 @@ INSERT INTO `contributions` (`id`, `first_name`, `last_name`, `contribution`, `a
 (13, 'Nguyen', 'Pham', 'Created styling for jobs.html', 1),
 (14, 'Nguyen', 'Pham', 'Contributed to Github', 1);
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Cấu trúc bảng cho bảng `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `job_ref` varchar(5) NOT NULL,
+  `job_title` varchar(100) NOT NULL,
+  `salary` varchar(100) NOT NULL,
+  `reporting_line` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `responsibilities` text NOT NULL,
+  `essentials` text NOT NULL,
+  `preferables` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `contributions`
+-- Chỉ mục cho bảng `contributions`
 --
 ALTER TABLE `contributions`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Chỉ mục cho bảng `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`job_ref`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `contributions`
+-- AUTO_INCREMENT cho bảng `contributions`
 --
 ALTER TABLE `contributions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
