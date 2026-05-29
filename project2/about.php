@@ -1,4 +1,3 @@
-<<<<<<< HEAD
     <?php include 'header.inc'; 
       require_once 'settings.php';
       $conn = mysqli_connect("localhost", "root", "", "kwnd_db");
@@ -6,9 +5,6 @@
         die("Connection failed: " . mysqli_connect_error());
       }  
     ?> 
-=======
-    <?php include '../header.inc'; ?> 
->>>>>>> 37818e90ccd2d5c497baa47bbfa6f2eb30e9ef34
     <main>
         <h2 class="headingCenter" id="classTimesHeading">Class Times</h2>
         <div class="times"> <!--Class Times-->

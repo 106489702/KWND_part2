@@ -150,4 +150,4 @@
         </form>
     </main>
 
-    <?php include '../footer.inc'; ?> 
+    <?php include 'footer.inc'; ?> 

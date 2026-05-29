@@ -1,4 +1,4 @@
-<?php include '../header.inc'; ?> 
+<?php include 'header.inc'; ?> 
 
 <?php
 error_reporting(E_ALL);
@@ -6,13 +6,8 @@ ini_set('display_errors', 1);
 
 session_start();
 
-if (!isset($_SESSION["admin"])) {
-    header("Location: login.php");
-    exit();
-}
-?>
 
-<?php include 'header.inc'; ?>
+?>
 <?php include 'nav.inc'; ?>
 
 

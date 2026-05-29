@@ -40,4 +40,4 @@
             <img id="media1" src="./images/media1.webp" alt="Active Consultation Depiction" width="600px" id="mediaExperience">
         </div>
     </main>
-    <?php include '../footer.inc'; ?> 
+    <?php include 'footer.inc'; ?> 
