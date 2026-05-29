@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = en>
   <head>
-    <title>KWAND Creative</title>
+    <title>KWND Creative</title>
     <meta charset="UTF-8">
     <meta name="description" content="About us page for our Creative Digital Media Agency">
     <meta name="keywords" content="Media,Digital Media,Web Design,Website Designer,Design,Designer,Brand,Branding,Digital,Team,About Us,Team Members,Digital Media Agency">
