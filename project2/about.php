@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang = en>
-  <head>
-    <title>About us</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="About us page for our Creative Digital Media Agency">
-    <meta name="keywords" content="Media,Digital Media,Web Design,Website Designer,Design,Designer,Brand,Branding,Digital,Team,About Us,Team Members,Digital Media Agency">
-    <meta name="author" content="Kerrigan La-Brooy Jr">
-    <!--CSS Style Sheet-->
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-  <body>
-    <?php include 'header.inc'; ?> 
+    <?php include '../header.inc'; ?> 
     <main>
         <h2 class="headingCenter" id="classTimesHeading">Class Times</h2>
         <div class="times"> <!--Class Times-->
@@ -206,5 +193,4 @@
         </div>
           
     </main>
-    <?php include 'footer.inc'; ?> 
-  </body>
+    <?php include '../footer.inc'; ?> 

@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" >
-    <meta name="description" content="Opening job positions at KWND Creative" >
-    <meta name="keywords" content="Job positions, Front-End Web Developer, Designer" >
-    <meta name="author" content="Nguyen Pham" >
-    <title>Opening Job Positions at KWND Creative</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  
-<?php include 'header.inc'; ?> 
- 
+<?php include '../header.inc'; ?>  
 <main>
 
 <h1>Job Positions</h1>
@@ -103,7 +87,5 @@
 </section>
 
 </main>
-    <?php include 'footer.inc'; ?> 
-</body>
-</html>
+    <?php include '../footer.inc'; ?> 
 

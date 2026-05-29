@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Apply for a role at KWND Creative">
-    <meta name="keywords" content="Apply, Job Application, Front-End Developer, Designer, Creative Agency, KWND Creative">
-    <meta name="author" content="G06">
-    <title>Apply | KWND Creative</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-<?php include 'header.inc'; ?> 
-
+    <?php include '../header.inc'; ?> 
     <main>
         <section class="formIntro">
             <h2>Apply to Join KWND Creative</h2>
@@ -163,6 +150,4 @@
         </form>
     </main>
 
-    <?php include 'footer.inc'; ?> 
-</body>
-</html>
+    <?php include '../footer.inc'; ?> 

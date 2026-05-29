@@ -1,17 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="HTML5, CSS, Media, Creative, COS10026">
-    <meta name="description" content="COS10026 Assessment 1 Home Page">
-    <meta name="author" content="William Luck">
-    <title>KWAND Home</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <?php include 'header.inc'; ?> 
+    <?php include '../header.inc'; ?> 
     <main>
         <div class="topcontent">
             <h2>Creating Engaging Media Experiences since 2026</h2>
@@ -53,6 +40,4 @@
             <img id="media1" src="./images/media1.webp" alt="Active Consultation Depiction" width="600px" id="mediaExperience">
         </div>
     </main>
-    <?php include 'footer.inc'; ?> 
-</body>
-</html>
+    <?php include '../footer.inc'; ?> 
