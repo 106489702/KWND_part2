@@ -1,4 +1,27 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang = en>
+  <head>
+    <title>About us</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="About us page for our Creative Digital Media Agency">
+    <meta name="keywords" content="Media,Digital Media,Web Design,Website Designer,Design,Designer,Brand,Branding,Digital,Team,About Us,Team Members,Digital Media Agency">
+    <meta name="author" content="Kerrigan La-Brooy Jr">
+    <!--CSS Style Sheet-->
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
+
+  <body>
+    <?php include 'header.inc'; 
+      require_once 'settings.php';
+      $conn = mysqli_connect("localhost", "root", "", "kwnd_db");
+      if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+      }  
+    ?> 
+=======
     <?php include '../header.inc'; ?> 
+>>>>>>> 37818e90ccd2d5c497baa47bbfa6f2eb30e9ef34
     <main>
         <h2 class="headingCenter" id="classTimesHeading">Class Times</h2>
         <div class="times"> <!--Class Times-->
@@ -49,27 +72,41 @@
         <h2 class="headingCenter">Contributions</h2>
         <div> <!--Contribution List-->
           <dl class="contributionDefList bottomPaddingDL">
-            <dt class="contDLItem boldDT padDT">Kerrigan</dt>
-              <dd>Created about.html.</dd>
-              <dd>Created style.css</dd>
-              <dd>Interacted with github</dd>
-              <dd>Interacted with Jira</dd>
-            <dt class="contDLItem boldDT padDT">Will</dt>
-              <dd>Created index.html.</dd>
-              <dd>Created style.css</dd>
-              <dd>Created github.</dd>
-              <dd>Created jira.</dd>
-              <dd>Group leader.</dd>
-            <dt class="contDLItem boldDT padDT">Duy</dt>
-              <dd>Created apply.html.</dd>
-              <dd>Created style.css</dd>
-              <dd>Interacted with github.</dd>
-              <dd>Interacted with Jira</dd>
-            <dt class="contDLItem boldDT padDT">Nguyen</dt>
-              <dd>Created jobs.html.</dd>
-              <dd>Created style.css</dd>
-              <dd>Interacted with github.</dd>
-              <dd>Interacted with Jira</dd>
+            <?php
+              $sql = "SELECT first_name, last_name, contribution, assessment_part FROM contributions ORDER BY last_name, first_name";
+              $result = mysqli_query($conn, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                $rowspans = [];
+                foreach ($rows as $row) {
+                  $key = $row["first_name"] . " " . $row["last_name"];
+                  $rowspans[$key] = ($rowspans[$key] ?? 0) + 1;
+                }
+                echo "<table>";
+                echo "<tr>
+                  <th>Name</th>
+                  <th>Contribution</th>
+                  <th>Assessment Part</th>
+                </tr>";
+                $seen = [];
+                foreach ($rows as $row) {
+                  $name = htmlspecialchars($row["first_name"] . " " . $row["last_name"]);
+                  echo "<tr>";
+                    if (!isset($seen[$name])) {
+                      echo "<td rowspan='" . $rowspans[$row["first_name"] . " " . $row["last_name"]] . "'>" . $name . "</td>";
+                      $seen[$name] = true;
+                    } 
+                    echo "<td>" . htmlspecialchars($row["contribution"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["assessment_part"]) . "</td>";
+                  echo "</tr>";
+                }
+                echo "</table>";
+              } 
+              else {
+                echo "<p>No contributions found.</p>";
+              }
+              mysqli_close($conn);
+            ?>
           </dl>
         </div>
         
