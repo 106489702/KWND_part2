@@ -242,7 +242,7 @@ if (mysqli_stmt_execute($stmt)) {
         <h2>Application Submitted Successfully!</h2>
         <p>
           Thank you, <strong><?php echo $firstName . ' ' . $lastName; ?></strong>!
-          Your Expression of Interest has been received.
+          Your application has been received.
         </p>
         <table>
           <tr><th>EOI Number</th>  <td>#<?php echo $eoi_number; ?></td></tr>
