@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 session_start();
 require_once("settings.php");
-$conn = mysqli_connect($host, $user, $password, $database);
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
