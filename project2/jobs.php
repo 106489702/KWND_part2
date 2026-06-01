@@ -1,4 +1,24 @@
-<?php include 'header.inc'; ?>  
+<?php
+require_once("settings.php");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Opening job positions at KWND Creative">
+    <meta name="keywords" content="Job positions, Front-End Web Developer, Designer">
+    <meta name="author" content="KWND Creative">
+    <title>Opening Job Positions at KWND Creative</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<?php include 'header.inc'; ?>
+
 <main>
 
 <h1>Job Positions</h1>
@@ -8,84 +28,57 @@
 </p>
 
 <aside>
-  <h2>Inclusive Employment Statement</h2>
-  <p>
-    KWND Creative welcomes applications from people of all backgrounds and encourages Aboriginal and Torres Strait Islander peoples to apply. We are committed to a respectful and diverse workplace.
-  </p>
+    <h2>Inclusive Employment Statement</h2>
+    <p>
+        KWND Creative welcomes applications from people of all backgrounds and encourages Aboriginal and Torres Strait Islander peoples to apply.
+        We are committed to a respectful and diverse workplace.
+    </p>
 </aside>
 
-<section id="front-end" >
-    <h2>Front-End Web Developer</h2>
-    <h3>Reference Number: ABC01</h3>
+<?php
 
-    <p>
-        This position involves building and updating UI element of digital websites. You will work with designers and other developers.
-    </p>
+$query = "SELECT * FROM jobs";
+$result = mysqli_query($conn, $query);
 
-    <p>
-        <strong>Salary:</strong> $75,000 – $90,000 annually<br>
-        <strong>Reporting line:</strong> Lead Developer
-    </p>
+if ($result && mysqli_num_rows($result) > 0) {
 
-    <h3>Key Responsibilities</h3>
-    <ol>
-        <li>Creating web pages using HTML and CSS</li>
-        <li>Helping ensure websites display correctly on different devices</li>
-        <li>Updating and maintaining existing website content</li>
-    </ol>
+    while ($row = mysqli_fetch_assoc($result)) {
 
-    <h3 id="requirements">Requirements</h3>
+        echo "<section>";
+        echo "<h2>" . htmlspecialchars($row['job_title']) . "</h2>";
+        echo "<h3>Reference Number: " . htmlspecialchars($row['job_ref']) . "</h3>";
 
-    <h4>Essentials</h4>
-    <ul>
-        <li>Knowledge of HTML and CSS</li>
-        <li>Understanding of responsive web design</li>
-        <li>Active listening and communicating</li>
-    </ul>
+        echo "<p>" . htmlspecialchars($row['description']) . "</p>";
 
-    <h4>Preferables</h4>
-    <ul>
-        <li>Experience with JavaScript</li>
-        <li>Familiarity with GitHub</li>
-    </ul>
-</section>
+        echo "<p>";
+        echo "<strong>Salary:</strong> " . htmlspecialchars($row['salary']) . "<br>";
+        echo "<strong>Reporting line:</strong> " . htmlspecialchars($row['reporting_line']);
+        echo "</p>";
 
-<section id="designer" >
-    <h2>Digital Content Designer</h2>
-    <h3>Reference Number: DEF02</h3>
+        echo "<h3>Responsibilities</h3>";
+        echo "<p>" . nl2br(htmlspecialchars($row['responsibilities'])) . "</p>";
 
-    <p>
-        This position focuses on creating visual content for websites and online platforms.
-    </p>
+        echo "<h3>Essential Requirements</h3>";
+        echo "<p>" . nl2br(htmlspecialchars($row['essentials'])) . "</p>";
 
-    <p>
-        <strong>Salary:</strong> $65,000 – $80,000 annually<br>
-        <strong>Reporting line:</strong> Creative Director
-    </p>
+        echo "<h3>Preferable Requirements</h3>";
+        echo "<p>" . nl2br(htmlspecialchars($row['preferables'])) . "</p>";
 
-    <h3>Key Responsibilities</h3>
-    <ol>
-        <li>Designing images and layouts for digital content</li>
-        <li>Following design guidelines and branding</li>
-        <li>Working with team to complete projects on time</li>
-    </ol>
+        echo "</section><hr>";
+    }
 
-    <h3>Requirements</h3>
+} else {
 
-    <h4>Essentials</h4>
-    <ul>
-        <li>Basic skills in web design tools and software</li>
-        <li>Creative approach to solving design problems</li>
-        <li>Ability to transform ideas into clear digital visuals</li>
-    </ul>
+    echo "<p>No jobs available.</p>";
+}
 
-    <h4>Preferables</h4>
-    <ul>
-        <li>Basic HTML and CSS knowledge</li>
-        <li>Experience with designing web content</li>
-    </ul>
-</section>
+mysqli_close($conn);
+
+?>
 
 </main>
-    <?php include 'footer.inc'; ?> 
 
+<?php include 'footer.inc'; ?>
+
+</body>
+</html>
