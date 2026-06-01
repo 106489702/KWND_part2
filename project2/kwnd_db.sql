@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th5 29, 2026 lúc 07:45 AM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Jun 01, 2026 at 10:27 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `kwnd_db`
+-- Database: `kwnd_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `contributions`
+-- Table structure for table `contributions`
 --
 
 CREATE TABLE `contributions` (
@@ -36,7 +36,7 @@ CREATE TABLE `contributions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `contributions`
+-- Dumping data for table `contributions`
 --
 
 INSERT INTO `contributions` (`id`, `first_name`, `last_name`, `contribution`, `assessment_part`) VALUES
@@ -58,7 +58,41 @@ INSERT INTO `contributions` (`id`, `first_name`, `last_name`, `contribution`, `a
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `jobs`
+-- Table structure for table `eoi`
+--
+
+CREATE TABLE `eoi` (
+  `EOINumber` int(11) NOT NULL,
+  `JobRef` varchar(5) NOT NULL,
+  `FirstName` varchar(20) NOT NULL,
+  `LastName` varchar(20) NOT NULL,
+  `DOB` date NOT NULL,
+  `Gender` enum('Male','Female','Other') NOT NULL,
+  `Street` varchar(40) NOT NULL,
+  `SuburbTown` varchar(40) NOT NULL,
+  `State` enum('VIC','NSW','QLD','SA','WA','TAS','ACT','NT') NOT NULL,
+  `Postcode` char(4) NOT NULL,
+  `Email` varchar(60) NOT NULL,
+  `Phone` varchar(12) NOT NULL,
+  `Skills` varchar(300) NOT NULL,
+  `OtherSkills` varchar(300) DEFAULT NULL,
+  `Status` enum('New','Current','Final') NOT NULL DEFAULT 'New'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `eoi`
+--
+
+INSERT INTO `eoi` (`EOINumber`, `JobRef`, `FirstName`, `LastName`, `DOB`, `Gender`, `Street`, `SuburbTown`, `State`, `Postcode`, `Email`, `Phone`, `Skills`, `OtherSkills`, `Status`) VALUES
+(1, 'ABC01', 'Nguyen ', 'Pham', '2016-05-12', 'Male', '', 'Hawthorne', 'VIC', '3122', 'pham@test.com', '04 8378 8378', 'very smarty', 'skillful', 'New'),
+(2, 'EFG01', 'Duy', '', '2016-05-12', 'Male', '', 'Hawthorne', 'VIC', '3123', 'Duy@test.com', '04 8378 8378', 'Very Valorant', 'skillful plat', 'New'),
+(3, 'ART01', 'Kerrigan', 'La-Brooy', '2008-03-09', 'Male', 'Blake', 'Berwick', 'VIC', '3806', 'legend@test.com', '04 8378 8378', 'skilled', 'very skilled', 'Current'),
+(4, 'ABC01', 'Will', 'Luck', '2008-03-09', 'Male', '', 'gisborne', 'VIC', '3437', 'lucky@test.com', '04 8378 8378', 'skilled', 'very lucky', 'Current');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -72,10 +106,19 @@ CREATE TABLE `jobs` (
   `preferables` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`job_ref`, `job_title`, `salary`, `reporting_line`, `description`, `responsibilities`, `essentials`, `preferables`) VALUES
+('COP03', 'Copywriter', '60000', 'Creative Director', 'Write engaging content for advertising and digital campaigns.', 'Create ad copy, website text, and social captions.', 'Excellent writing skills, attention to detail.', 'SEO knowledge.'),
+('GRA01', 'Graphic Designer', '65000', 'Creative Director', 'Create visual assets for client campaigns and social media.', 'Design graphics, update branding materials, collaborate with team.', 'Adobe Photoshop, Illustrator, strong design skills.', 'Motion graphics experience.'),
+('SOC02', 'Social Media Coordinator', '55000', 'Marketing Manager', 'Help manage content across social platforms.', 'Schedule posts, monitor engagement, assist with campaigns.', 'Strong communication skills, social media knowledge.', 'Experience with Canva or Meta Business Suite.');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -85,46 +128,58 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `contributions`
+-- Indexes for table `contributions`
 --
 ALTER TABLE `contributions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `jobs`
+-- Indexes for table `eoi`
+--
+ALTER TABLE `eoi`
+  ADD PRIMARY KEY (`EOINumber`);
+
+--
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`job_ref`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `contributions`
+-- AUTO_INCREMENT for table `contributions`
 --
 ALTER TABLE `contributions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `eoi`
+--
+ALTER TABLE `eoi`
+  MODIFY `EOINumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
@@ -133,24 +188,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-CREATE TABLE `eoi` (
-  `EOINumber`   INT(11)      NOT NULL AUTO_INCREMENT,
-  `JobRef`      VARCHAR(5)   NOT NULL,
-  `FirstName`   VARCHAR(20)  NOT NULL,
-  `LastName`    VARCHAR(20)  NOT NULL,
-  `DOB`         DATE         NOT NULL,
-  `Gender`      ENUM('Male','Female','Other') NOT NULL,
-  `Street`      VARCHAR(40)  NOT NULL,
-  `SuburbTown`  VARCHAR(40)  NOT NULL,
-  `State`       ENUM('VIC','NSW','QLD','SA','WA','TAS','ACT','NT') NOT NULL,
-  `Postcode`    CHAR(4)      NOT NULL,
-  `Email`       VARCHAR(60)  NOT NULL,
-  `Phone`       VARCHAR(12)  NOT NULL,
-  `Skills`      VARCHAR(300) NOT NULL,
-  `OtherSkills` VARCHAR(300) DEFAULT NULL,
-  `Status`      ENUM('New','Current','Final') NOT NULL DEFAULT 'New',
-  PRIMARY KEY (`EOINumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
