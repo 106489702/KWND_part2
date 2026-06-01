@@ -1,3 +1,4 @@
+
 <?php include 'header.inc'; ?> 
 
 <?php
@@ -12,7 +13,7 @@ if (!isset($_SESSION["admin"])) {
 }
 
 require_once("settings.php");
-$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+$conn = mysqli_connect($host, $user, $password, $database);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());

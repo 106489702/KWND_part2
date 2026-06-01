@@ -1,6 +1,12 @@
 <?php
-    $host = "localhost";
-    $user = "root";
-    $pwd = "";
-    $sql_db = "kwnd_db";
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "kwnd_db";
+
+$conn = mysqli_connect($host, $user, $password, $database);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 ?>
