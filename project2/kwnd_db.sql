@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2026 at 10:27 AM
+-- Generation Time: Jun 01, 2026 at 03:54 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,21 @@ INSERT INTO `contributions` (`id`, `first_name`, `last_name`, `contribution`, `a
 (11, 'Duy', 'Phan', 'Contributed to Github', 1),
 (12, 'Nguyen', 'Pham', 'Created jobs.html', 1),
 (13, 'Nguyen', 'Pham', 'Created styling for jobs.html', 1),
-(14, 'Nguyen', 'Pham', 'Contributed to Github', 1);
+(14, 'Nguyen', 'Pham', 'Contributed to Github', 1),
+(15, 'Will', 'Luck', 'reformatted .html files to .php', 2),
+(16, 'Will', 'Luck', 'created settings.php', 2),
+(17, 'Will', 'Luck', 'Created contributions table', 2),
+(18, 'Will', 'Luck', 'Dynamically rendered contributions table in about.php', 2),
+(19, 'Kerrigan', 'La-Brooy', 'Created manage.php', 2),
+(20, 'Kerrigan', 'La-Brooy', 'Dynamically rendered eoi table in manage.php', 2),
+(21, 'Kerrigan', 'La-Brooy', 'Allowed interaction with eoi table from manage.php (sort, search, delete)', 2),
+(22, 'Duy', 'Phan', 'created jobs table', 2),
+(23, 'Duy', 'Phan', 'Dynamically rendered jobs table on jobs.html', 2),
+(24, 'Duy', 'Phan', 'Created login.php', 2),
+(25, 'Duy', 'Phan', 'Authenticated login/logout of manage.php using a users table', 2),
+(26, 'Nguyen', 'Pham', 'Created Process_eoi.php (validated record)', 2),
+(27, 'Nguyen', 'Pham', 'Created eoi table', 2),
+(28, 'Nguyen', 'Pham', 'Linked eoi table to existing form on apply.php', 2);
 
 -- --------------------------------------------------------
 
@@ -170,7 +184,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `contributions`
 --
 ALTER TABLE `contributions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `eoi`
